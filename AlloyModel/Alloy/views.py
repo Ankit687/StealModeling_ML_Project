@@ -9,6 +9,10 @@ def index(request):
     return render(request, 'index.html')
 
 
+def main(request):
+    return render(request, 'main.html')
+
+
 def register(request):
     if request.method == "POST":
         first_name = request.POST['first_name']
@@ -57,7 +61,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect('/login/')
+            return redirect('/')
         else:
             messages.info(request, 'invalid username')
             return redirect('/')
