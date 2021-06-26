@@ -1,0 +1,28 @@
+{% block Background %}
+{% load static %}
+<!-- Jumbotron -->
+<!-- <div class="p-5 text-center bg-light" style="margin-top: 58px;">
+        <img src="{% static '/img/Carbon-Steel-Aviation.jpg' %}" alt="" srcset="">
+        <h1 class="mb-3">Heading</h1>
+        <h4 class="mb-3">Subheading</h4>
+        <a class="btn btn-primary" href="" role="button">Call to action</a>
+    </div> -->
+<!-- Jumbotron -->
+
+<!-- Background image -->
+<div class="p-5 text-center bg-image" style="
+    background-image: url('{% static '/img/steelbars.png' %}');
+    height: 680px;">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white">
+                <h1 class="mb-3">Make your own Alloysteal by picking different different elements</h1>
+                <h4 class="mb-3">Using ML Model</h4>
+                <a class="btn btn-outline-light btn-lg" href="main/" role="button">Click to action</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Background image -->
+
+{% endblock %}
