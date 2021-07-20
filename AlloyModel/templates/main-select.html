@@ -4,32 +4,154 @@
 <!-- Jumbotron  -->
 <div class="p-5 text-center bg-light" style="margin-top: 58px;">
     <p class="h3">Choose your composition of metals</p>
-    <div class="d-flex justify-content-center">
-        <div class="w-50 p-3 d-flex align-items-start flex-column" style="background-color: rgb(247, 243, 243);">
-            <label for="customRange3" class="form-label">Carbon 'C'</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
-            <label for="customRange3" class="form-label">Silicon 'Si'</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
-            <label for="customRange3" class="form-label">Manganese 'Mn'</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
-            <label for="customRange3" class="form-label">Phosphorus 'P'</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
-            <label for="customRange3" class="form-label">Nickel 'Ni'</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
-            <label for="customRange3" class="form-label">Chromium 'Cr'</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
-            <label for="customRange3" class="form-label">Molybdenum 'Mo'</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
-            <label for="customRange3" class="form-label">Manganese/Sulfur 'Mn/S'</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
-            <label for="customRange3" class="form-label">Cooling Rate 'CR'</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
-            <label for="customRange3" class="form-label">Tempering Temperature 'TT'</label>
-            <input type="range" class="form-range" min="0" max="5" step="0.5" id="customRange3">
+    <form action="/output/" method="POST" id="save_composition">
+        {% csrf_token %}
+        <div class="d-flex justify-content-center">
+            <div class="w-50 p-3 d-flex align-items-start flex-column" style="background-color: rgb(247, 243, 243);">
+                <label for="customRange3" class="form-label">Carbon 'C'</label>
+                <input type="range" class="form-range" min="0.32" max="0.44" step="0.01" id="carbonCustomRange"
+                    oninput="carbonAmount.value=carbonCustomRange.value" name="Carbon">
+                <input type="number" class="form-control" min="0.32" max="0.44" step="0.01" id="carbonAmount"
+                    placeholder="Carbon Value" oninput="carbonCustomRange.value=carbonAmount.value">
+
+                <label for="customRange3" class="form-label">Silicon 'Si'</label>
+                <input type="range" class="form-range" min="0.19" max="0.37" step="0.01" id="siliconCustomRange"
+                    oninput="siliconAmount.value=siliconCustomRange.value" name="Silicon">
+                <input type="number" class="form-control" min="0.19" max="0.37" step="0.01" id="siliconAmount"
+                    placeholder="Silicon Value" oninput="siliconCustomRange.value=siliconAmount.value">
+
+                <label for="customRange3" class="form-label">Manganese 'Mn'</label>
+                <input type="range" class="form-range" min="0.33" max="1.51" step="0.01" id="manganeseCustomRange"
+                    oninput="manganeseAmount.value=manganeseCustomRange.value" name="Manganese">
+                <input type="number" class="form-control" min="0.33" max="1.51" step="0.01" id="manganeseAmount"
+                    placeholder="Manganese Value" oninput="manganeseCustomRange.value=manganeseAmount.value">
+
+                <label for="customRange3" class="form-label">Phosphorus 'P'</label>
+                <input type="range" class="form-range" min="0.020" max="0.038" step="0.001" id="phosphorusCustomRange"
+                    oninput="phosphorusAmount.value=phosphorusCustomRange.value" name="Phosphorus">
+                <input type="number" class="form-control" min="0.020" max="0.038" step="0.001" id="phosphorusAmount"
+                    placeholder="Phosphorus Value" oninput="phosphorusCustomRange.value=phosphorusAmount.value">
+
+                <label for="customRange3" class="form-label">Nickel 'Ni'</label>
+                <input type="range" class="form-range" min="0.56" max="1.08" step="0.01" id="nickelCustomRange"
+                    oninput="nickelAmount.value=nickelCustomRange.value" name="Nickel">
+                <input type="number" class="form-control" min="0.56" max="1.08" step="0.01" id="nickelAmount"
+                    placeholder="Nickel Value" oninput="nickelCustomRange.value=nickelAmount.value">
+
+                <label for="customRange3" class="form-label">Chromium 'Cr'</label>
+                <input type="range" class="form-range" min="0.21" max="0.57" step="0.01" id="chromiumCustomRange"
+                    oninput="chromiumAmount.value=chromiumCustomRange.value" name="Chromium">
+                <input type="number" class="form-control" min="0.21" max="0.57" step="0.01" id="chromiumAmount"
+                    placeholder="Chromium Value" oninput="chromiumCustomRange.value=chromiumAmount.value">
+
+                <label for="customRange3" class="form-label">Molybdenum 'Mo'</label>
+                <input type="range" class="form-range" min="0.11" max="0.25" step="0.01" id="molybdenumCustomRange"
+                    oninput="molybdenumAmount.value=molybdenumCustomRange.value" name="Molybdenum">
+                <input type="number" class="form-control" min="0.11" max="0.25" step="0.01" id="molybdenumAmount"
+                    placeholder="Molybdenum Value" oninput="molybdenumCustomRange.value=molybdenumAmount.value">
+
+                <label for="customRange3" class="form-label">Manganese/Sulfur 'Mn/S'</label>
+                <input type="range" class="form-range" min="8.0" max="86.0" step="1.0" id="mnsCustomRange"
+                    oninput="mnsAmount.value=mnsCustomRange.value" name="Molybdenum_Sulfur">
+                <input type="number" class="form-control" min="8.0" max="86.0" step="1.0" id="mnsAmount"
+                    placeholder="Manganese/Sulfur Value" oninput="mnsCustomRange.value=mnsAmount.value">
+
+                <label for="customRange3" class="form-label">Cooling Rate 'CR'</label>
+                <input type="range" class="form-range" min="3.0" max="118.0" step="1.0" id="coolingRateCustomRange"
+                    oninput="coolingRateAmount.value=coolingRateCustomRange.value" name="Cooling_Rate">
+                <input type="number" class="form-control" min="3.0" max="118.0" step="1.0" id="coolingRateAmount"
+                    placeholder="Cooling Rate Value" oninput="coolingRateCustomRange.value=coolingRateAmount.value">
+
+                <label for="customRange3" class="form-label">Tempering Temperature 'TT'</label>
+                <input type="range" class="form-range" min="400.0" max="700.0" step="1.0"
+                    id="temperingTemperatureCustomRange"
+                    oninput="temperingTemperatureAmount.value=temperingTemperatureCustomRange.value"
+                    name="Tempering_Temperature">
+                <input type="number" class="form-control" min="400.0" max="700.0" step="1.0"
+                    id="temperingTemperatureAmount" placeholder="Tempering Temperature Value"
+                    oninput="temperingTemperatureCustomRange.value=temperingTemperatureAmount.value">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3" id="check_output">Run Model</button>
+    </form>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#output">
+        Check Your Output
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="output" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    You didn't run your Model
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
+                        Close
+                    </button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary mb-3">Check output</button>
+
 </div>
 <!-- Jumbotron -->
+<!-- 
+{% if messages %}
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <ul class="messages">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endif %} -->
+
+<!-- <script type="text/javascript">
+    $('#save_composition').on('submit', function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: '/output/',
+            data: {
+                Carbon: $('#carbonCustomRange').val(),
+                Silicon: $('#siliconCustomRange').val(),
+                Manganese: $('#manganeseCustomRange').val(),
+                Phosphorus: $('#phosphorusCustomRange').val(),
+                Nickel: $('#nickelCustomRange').val(),
+                Chromium: $('#chromiumCustomRange').val(),
+                Molybdenum: $('#molybdenumCustomRange').val(),
+                Molybdenum_Sulfur: $('#mnsCustomRange').val(),
+                Cooling_Rate: $('#coolingRateCustomRange').val(),
+                Tempering_Temperature: $('#temperingTemperatureCustomRange').val(),
+                csrfimiddlewaretoken: $('input[Carbon=csrfimiddlewaretoken]').val()
+            },
+            success: function() {
+                alert("success");
+            }
+        });
+    })
+</script> -->
 
 {% endblock %}

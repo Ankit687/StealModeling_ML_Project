@@ -20,7 +20,7 @@
                 <h4 class="mb-3">Prediction of good quality AlloySteal with the different element choice</h4>
                 {% if user.is_authenticated %}
                 {% csrf_token %}
-                <a class="btn btn-outline-light btn-lg" href="main/" role="button">Click to action</a>
+                <a class="btn btn-outline-light btn-lg" href="/main/" role="button">Click to action</a>
                 {% else %}
                 {% csrf_token %}
                 <a class="btn btn-outline-light btn-lg" role="button" data-mdb-toggle="modal" data-mdb-target="#exampleModal">Click to action</a>
